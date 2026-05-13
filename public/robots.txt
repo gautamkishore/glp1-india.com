@@ -1,0 +1,14 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://glp1-india.com/sitemap.xml
+
+# Block sensitive paths
+Disallow: /_next/
+Disallow: /api/
+
+# Crawl-delay for politeness
+Crawl-delay: 10
+
+# Sitemap index
+Sitemap: https://glp1-india.com/sitemap.xml
