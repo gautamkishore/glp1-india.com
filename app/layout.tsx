@@ -137,7 +137,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
               canonicalUrl: "https://glp1-india.com",
               inLanguage: "en-IN",
               isAccessibleForFree: true,
-              lastReviewed: "2026-01-15",
+              lastReviewed: "2026-05-29",
+              dateModified: "2026-05-29",
               reviewedBy: {
                 "@type": "MedicalOrganization",
                 name: "GLP-1 India Medical Review Board",
@@ -293,6 +294,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
               },
               sameAs: [
                 "https://wa.me/918878199499",
+                "https://glp1compare.in",
+                "https://semaglutideindia.top",
               ],
             }),
           }}

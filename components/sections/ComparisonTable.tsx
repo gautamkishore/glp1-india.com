@@ -318,6 +318,17 @@ export default function ComparisonTable() {
               </p>
             </div>
           </motion.div>
+
+          {/* Cross-link CTA to glp1compare.in */}
+          <div className="mt-6 rounded-2xl border border-blue-100 bg-blue-50 p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+            <div>
+              <p className="font-semibold text-blue-900 text-sm">Want to compare specific Indian generic brands?</p>
+              <p className="text-blue-700 text-xs mt-1">Use our free GLP-1 cost calculator — compare Obeda, Semanat, Noveltreat &amp; 7 more brands.</p>
+            </div>
+            <a href="https://glp1compare.in" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 whitespace-nowrap rounded-xl bg-blue-900 px-5 py-2.5 text-sm font-semibold text-white hover:bg-blue-800 transition-colors">
+              Open Brand Comparison Tool →
+            </a>
+          </div>
         </motion.div>
       </div>
     </section>

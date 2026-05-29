@@ -18,6 +18,11 @@ const footerLinks = {
     { label: "Privacy Policy", href: "/privacy" },
     { label: "Terms of Use", href: "/terms" },
   ],
+  'Our Network': [
+    { label: '⚖️ GLP-1 Compare India', href: 'https://glp1compare.in' },
+    { label: '💊 Semaglutide India', href: 'https://semaglutideindia.top' },
+    { label: '💬 WeightWonder', href: 'https://weightwonder.in' },
+  ],
 };
 
 export default function Footer() {
@@ -28,7 +33,7 @@ export default function Footer() {
     >
       <div className="container-px pt-16 pb-8">
         {/* Top */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-10 mb-12">
           {/* Brand */}
           <div className="md:col-span-1">
             <div className="flex items-center gap-2.5 mb-4">
@@ -70,6 +75,7 @@ export default function Footer() {
                     <a
                       href={link.href}
                       className="text-sm text-gray-500 hover:text-brand-400 transition-colors"
+                      {...(link.href.startsWith('https://') ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
                     >
                       {link.label}
                     </a>

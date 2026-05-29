@@ -10,22 +10,10 @@ import UrgencyStrip from "@/components/sections/UrgencyStrip";
 import FinalCTA from "@/components/sections/FinalCTA";
 import Sources from "@/components/sections/Sources";
 import Footer from "@/components/sections/Footer";
-import Script from "next/script";
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-white overflow-x-hidden">
-      {/* Google Tag Manager - noscript fallback */}
-      <noscript>
-        <iframe
-          src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX"
-          height="0"
-          width="0"
-          style={{ display: "none", visibility: "hidden" }}
-          title="Google Tag Manager"
-        />
-      </noscript>
-
       {/* Skip to content for accessibility */}
       <a
         href="#main-content"
@@ -35,6 +23,14 @@ export default function Home() {
       </a>
 
       <TopBar />
+      {/* Cross-site network banner */}
+      <div className="bg-blue-950 text-blue-100 text-xs py-2 px-4 text-center">
+        <span className="font-semibold">GLP-1 India Research Network:</span>
+        {' '}
+        <a href="https://glp1compare.in" target="_blank" rel="noopener noreferrer" className="underline hover:text-white transition-colors">⚖️ Compare All Indian Brands &amp; Costs</a>
+        {' · '}
+        <a href="https://semaglutideindia.top" target="_blank" rel="noopener noreferrer" className="underline hover:text-white transition-colors">💊 Start Supervised Treatment</a>
+      </div>
       <Hero />
       <StatsBar />
       <WhatAreGLP1s />
@@ -47,19 +43,6 @@ export default function Home() {
       <Sources />
       <Footer />
 
-      {/* Google tag (gtag.js) — replace with real ID */}
-      <Script
-        strategy="afterInteractive"
-        src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"
-      />
-      <Script id="google-analytics" strategy="afterInteractive">
-        {`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', 'G-XXXXXXX');
-        `}
-      </Script>
     </main>
   );
 }
