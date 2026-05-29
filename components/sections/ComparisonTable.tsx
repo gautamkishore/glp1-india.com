@@ -25,7 +25,7 @@ const rows: Row[] = [
     unsupervised: "cross",
     crashDiet: "cross",
     genericPlans: "cross",
-    wwPlus: "warn",
+    wwPlus: "check",
     wwGlp1: "check",
   },
   {
@@ -45,11 +45,11 @@ const rows: Row[] = [
     wwGlp1: "check",
   },
   {
-    label: "Metabolic Testing",
+    label: "Metabolic Testing (BCA)",
     unsupervised: "cross",
     crashDiet: "cross",
     genericPlans: "cross",
-    wwPlus: "cross",
+    wwPlus: "check",
     wwGlp1: "check",
   },
   {
@@ -57,7 +57,7 @@ const rows: Row[] = [
     unsupervised: "cross",
     crashDiet: "cross",
     genericPlans: "cross",
-    wwPlus: "warn",
+    wwPlus: "check",
     wwGlp1: "check",
   },
   {
@@ -69,19 +69,19 @@ const rows: Row[] = [
     wwGlp1: "check",
   },
   {
-    label: "Long-Term Maintenance Plan",
+    label: "Stabilisation Phase",
     unsupervised: "cross",
     crashDiet: "cross",
     genericPlans: "cross",
-    wwPlus: "warn",
+    wwPlus: "check",
     wwGlp1: "check",
   },
   {
-    label: "Average Cost (Monthly)",
+    label: "Value for Money",
     unsupervised: "warn",
     crashDiet: "warn",
     genericPlans: "warn",
-    wwPlus: "warn",
+    wwPlus: "check",
     wwGlp1: "check",
   },
   {
@@ -89,7 +89,7 @@ const rows: Row[] = [
     unsupervised: "warn",
     crashDiet: "cross",
     genericPlans: "warn",
-    wwPlus: "warn",
+    wwPlus: "check",
     wwGlp1: "check",
   },
 ];
@@ -146,19 +146,25 @@ const icons: Record<string, React.ReactElement> = {
 };
 
 const colLabels = {
-  unsupervised: "GLP-1 Unsupervised",
+  unsupervised: "GLP-1 Alone",
   crashDiet: "Crash Diets",
   genericPlans: "Generic Plans",
-  wwPlus: "WW Plus",
-  wwGlp1: "WW + GLP-1 Care",
+  wwPlus: "WeightWonder Plus™",
+  wwGlp1: "WW Plus + GLP-1",
 };
 
 const colColors = {
   unsupervised: "text-red-500",
   crashDiet: "text-amber-500",
   genericPlans: "text-amber-500",
-  wwPlus: "text-blue-500",
+  wwPlus: "text-brand-600",
   wwGlp1: "text-green-600",
+};
+
+// Columns that should get a highlight background
+const colHighlight: Record<string, string> = {
+  wwPlus: "bg-brand-50/60",
+  wwGlp1: "bg-green-50/60",
 };
 
 export default function ComparisonTable() {
@@ -223,8 +229,15 @@ export default function ComparisonTable() {
                   {Object.entries(colLabels).map(([key, label]) => (
                     <th
                       key={key}
-                      className={`text-center py-4 px-3 text-sm font-semibold uppercase tracking-wider ${colColors[key as keyof typeof colColors]}`}
+                      className={`text-center py-4 px-3 text-sm font-semibold uppercase tracking-wider ${
+                        colHighlight[key] ? colHighlight[key] + " rounded-t-xl" : ""
+                      } ${colColors[key as keyof typeof colColors]}`}
                     >
+                      {key === "wwGlp1" && (
+                        <span className="block text-xs font-normal text-green-500 mb-1 normal-case tracking-normal">
+                          ✦ Adds GLP-1 layer
+                        </span>
+                      )}
                       {label}
                     </th>
                   ))}
@@ -238,32 +251,24 @@ export default function ComparisonTable() {
                     whileInView={{ opacity: 1 }}
                     transition={{ duration: 0.3, delay: rIdx * 0.05 }}
                     viewport={{ once: true }}
-                    className={`border-t ${
-                      rIdx === rows.length - 1
-                        ? "border-gray-200"
-                        : "border-gray-50"
-                    } ${
-                      rIdx === rows.length - 1 || rIdx === rows.length - 2
-                        ? "bg-brand-50/30"
-                        : ""
-                    }`}
+                    className={`border-t border-gray-50`}
                   >
                     <td className="py-4 px-4 font-medium text-gray-900 text-sm">
                       {row.label}
                     </td>
                     {Object.keys(colLabels).map((key) => {
                       const val = row[key as keyof Row];
-                      const cellColor =
-                        colColors[key as keyof typeof colColors];
+                      const cellColor = colColors[key as keyof typeof colColors];
+                      const bgHighlight = colHighlight[key] ?? "";
                       return (
                         <td
                           key={key}
-                          className="py-4 px-3 text-center align-middle"
+                          className={`py-4 px-3 text-center align-middle ${bgHighlight}`}
                         >
                           <span
                             className={`inline-flex items-center justify-center ${
                               val === "check"
-                                ? cellColor.replace("text-", "text-")
+                                ? cellColor
                                 : val === "warn"
                                 ? "text-amber-500"
                                 : "text-red-400"
@@ -286,11 +291,11 @@ export default function ComparisonTable() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.6 }}
             viewport={{ once: true }}
-            className="mt-10 bg-green-50 border border-green-200 rounded-2xl p-6 flex items-start gap-4"
+            className="mt-10 bg-brand-50 border border-brand-200 rounded-2xl p-6 flex items-start gap-4"
           >
-            <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
+            <div className="w-10 h-10 bg-brand-100 rounded-full flex items-center justify-center flex-shrink-0">
               <svg
-                className="w-5 h-5 text-green-600"
+                className="w-5 h-5 text-brand-600"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -305,16 +310,11 @@ export default function ComparisonTable() {
               </svg>
             </div>
             <div>
-              <p className="font-heading font-semibold text-green-800 text-base">
-                Honest note on WW (WeightWatchers)
+              <p className="font-heading font-semibold text-brand-800 text-base">
+                How GLP-1 fits into WeightWonder Plus™
               </p>
-              <p className="text-sm text-green-700 mt-1 leading-relaxed">
-                WW is a solid lifestyle program for general wellness, but it
-                does <strong>not</strong> include GLP-1 medication, metabolic
-                testing, or specialist medical oversight as standard. The
-                &quot;WW + GLP-1 Care&quot; model combines the structure of
-                lifestyle coaching with the clinical power of GLP-1 therapy —
-                giving you the best of both worlds.
+              <p className="text-sm text-brand-700 mt-1 leading-relaxed">
+                WeightWonder Plus™ is a complete supervised weight loss program — BCA tracking, daily mentor, specialist consultations, nutrition optimization, and a stabilisation phase. For clients who also want GLP-1 medication, we layer it in as a clinical tool within the same framework. The program&apos;s results stand on their own with or without GLP-1.
               </p>
             </div>
           </motion.div>
