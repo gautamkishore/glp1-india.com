@@ -9,9 +9,12 @@ const footerLinks = {
     { label: "Medical Review Board", href: "#reviewers" },
   ],
   Resources: [
-    { label: "GLP-1 Medications", href: "#what-are-glp1s" },
-    { label: "Comparison", href: "#comparison" },
-    { label: "FAQ", href: "#faq" },
+    { label: "GLP-1 Medications", href: "/#what-are-glp1s" },
+    { label: "Comparison", href: "/#comparison" },
+    { label: "FAQ", href: "/#faq" },
+    { label: "PCOS Guide", href: "/pcos-weight-loss" },
+    { label: "Indian Diet Guide", href: "/glp1-side-effects-indian-diet" },
+    { label: "CDSCO & Legal Guide", href: "/cdsco-schedule-h-regulations" },
   ],
   Support: [
     { label: "Contact Us", href: "https://wa.me/918878199499" },

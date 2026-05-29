@@ -36,25 +36,25 @@ export default function TopBar() {
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center gap-8">
           <a
-            href="#what-are-glp1s"
+            href="/#what-are-glp1s"
             className="text-sm font-medium text-gray-600 hover:text-brand-600 transition-colors"
           >
             What are GLP-1s
           </a>
           <a
-            href="#comparison"
+            href="/#comparison"
             className="text-sm font-medium text-gray-600 hover:text-brand-600 transition-colors"
           >
             Comparison
           </a>
           <a
-            href="#weightwonder"
+            href="/#weightwonder"
             className="text-sm font-medium text-gray-600 hover:text-brand-600 transition-colors"
           >
             WeightWonder
           </a>
           <a
-            href="#faq"
+            href="/#faq"
             className="text-sm font-medium text-gray-600 hover:text-brand-600 transition-colors"
           >
             FAQ
